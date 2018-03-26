@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome {{user.first_name}}</h1>
+    {% for message in messages %}
+    <h3 style="color:red">*{{message}}</h3>
+    {% endfor %} <hr>
+    <h1>Add a new Course</h1>
+    <form action="/courses/create" method="POST">
+        {% csrf_token %}
+        <label for="course_name">Name: </label>
+        <input type="text" name="course_name"><br>
+        <label for="description">Description: </label><br>
+        <textarea name="description" id="" cols="30" rows="10"></textarea><br>
+        <input type="submit" value="Add" style="font-size:15pt;color:rgb(38, 39, 38);background-color:green; ">
+    </form><hr>
+    <h1>Courses</h1><hr> 
+
+</body>
+</html>

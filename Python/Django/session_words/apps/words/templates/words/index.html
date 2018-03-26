@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Session Words</title>
+</head>
+<body>
+    <h1>Add a new Word!!</h1><br>
+    <form action="/process" method="POST">
+        {% csrf_token %}
+        <label for="word">Word:  </label><input type="text" name="word" id=""><br><br>
+        <label for="color">Choose a color:</label><br>
+        <input type="radio" name="color" id="" value="red"><label for="color">Red</label><br>
+        <input type="radio" name="color" id="" value="green"><label for="color">Green</label><br>
+        <input type="radio" name="color" id="" value="blue"><label for="color">Blue</label><br><br>
+        <input type="checkbox" name="size" value="big" id=""><label for="size">show in BIG fonts!!</label><br><br>
+        <input type="submit" value="Add to Session">
+    </form><hr>
+    <a href="/clear">------------Clear Session----------</a>
+
+    <p><font color="{{color}}" >{{dictionary.content}}</font></p>
+</body>
+</html>

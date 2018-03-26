@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    </style>
+<body>
+    <h1>Users</h1><hr>
+    <table>
+        <tr>
+            <th><h1>ID</h1></th>
+            <th><h1>Full Name</h1></th>
+            <th><h1>Email</h1></th>
+            <th><h1>Created at</h1></th>
+            <th><h1>Actions</h1></th>
+        </tr>
+            {% for user in users %}
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.first_name}} {{user.last_name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.created_at}}</td>
+            <td><a href="/show/{{user.id}}">Show</a> <a href="/edit/{{user.id}}">Edit</a> <a href="/delete/{{user.id}}">Delete</a></td>
+            {% endfor %}
+        </tr>
+    </table>
+    <a href="/new">Create a new User</a>
+</body>
+</html>

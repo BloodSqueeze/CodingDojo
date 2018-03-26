@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'gold/css/style.css' %}" type="text/css">
+</head>
+<body>
+    <h1>Hi {{player}} !!!!</h1>
+    <h1>Your Gold: {{count}}</h1><hr>
+
+    <form action="/name" method="POST">
+        {% csrf_token %}
+        <label for="player">What is your name??</label>
+        <input name="player" type="text">
+        <input type="submit" value="SUBMIT">
+    </form>
+    <h2><a href="/reset">Reset Your Count!!</a></h2><br>
+    <div class="container">
+        <div class="box" id="boxone">
+            <h2>Farm</h2>
+            <h3>(earns 10 - 20 gold)</h3>
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="html_activity" value="farm">
+                <input type="submit" value="Find Gold">
+            </form>
+        </div>
+        <div class="box">
+            <h2>Cave</h2>
+            <h3>(earns 5 - 10 gold)</h3>
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="html_activity" value="cave">
+                <input type="submit" value="Find Gold">
+            </form>
+    
+        </div>
+        <div class="box">
+            <h2>House</h2>
+            <h3>(earns 2 - 5 gold)</h3>
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="html_activity" value="house">
+                <input type="submit" value="Find Gold">
+            </form>
+        </div>
+        <div class="box">
+            <h2>Casino</h2>
+            <h3>(earns/lose 0 - 50 gold)</h3>
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="html_activity" value="casino">
+                <input type="submit" value="Find Gold">
+            </form>
+        </div>
+    </div>
+    <div id="activitycontainer" class="bigcontainer" style="overflow-y: scroll;">
+        <h2>Activity:</h2>
+        {% for log in logs %}
+        <h3>{{log}}</h3>
+        {% endfor %}
+    </div>
+</body>
+</html>
