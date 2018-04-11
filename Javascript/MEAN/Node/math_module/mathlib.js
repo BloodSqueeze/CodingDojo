@@ -12,7 +12,8 @@ module.exports = function (){
         console.log(num * num)
       },
       random: function(num1, num2) {
-           // add code here
+        let z = Math.floor(Math.random() * num2) + num1;
+        console.log(z);
       }
     }
   };
